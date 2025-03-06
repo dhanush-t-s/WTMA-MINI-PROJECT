@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Signup Form with Validation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-cover bg-center bg-no-repeat mt-24" style="background-image: url('https://images.pexels.com/photos/235986/pexels-photo-235986.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+    <div class="mx-auto px-4">
+        <div class="max-w-4xl mx-auto backdrop-blur-lg bg-white/60 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6">Signup Form</h2>
+            <form id="signupForm" class="space-y-4">
+                <div>
+                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                    <input type="text" id="firstName" name="firstName" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="firstNameError"></div>
+                </div>
+
+                <div>
+                    <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="lastNameError"></div>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="emailError"></div>
+                </div>
+
+                <div>
+                    <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="dobError"></div>
+                </div>
+
+                <div>
+                    <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
+                    <input type="text" id="age" name="age" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="ageError"></div>
+                </div>
+
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="text" id="phone" name="phone" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    <div class="text-sm text-red-500 mt-1" id="phoneError"></div>
+                </div>
+
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                    <textarea id="address" name="address" rows="4" class="mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
+                    <div class="text-sm text-red-500 mt-1" id="addressError"></div>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        Signup
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mt-8 text-white">Submitted Data:</h3>
+        <div class="overflow-x-auto mt-4">
+            <!-- Table Container with Blur Effect -->
+            <div class="backdrop-blur-lg bg-white/60 p-6 rounded-lg shadow-lg">
+                <table class="min-w-full table-auto border-collapse border border-gray-300 rounded-lg">
+                    <!-- Table Header -->
+                    <thead class="bg-gray-200 backdrop-blur-sm bg-opacity-60">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">First Name</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Last Name</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date of Birth</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Age</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Phone Number</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Address</th>
+                        </tr>
+                    </thead>
+                    <!-- Table Body -->
+                    <tbody id="resultTable" class="text-sm text-gray-700">
+                        <!-- Rows will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
