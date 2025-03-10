@@ -97,68 +97,78 @@
         </div>
     </div>
 
-    
-        <script>
-    document.getElementById("signupForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        
-        let valid = true;
-
-        document.querySelectorAll(".text-red-500").forEach(el => el.innerText = "");
-
-        const firstName = document.getElementById("firstName").value.trim();
-        if (!/^[A-Za-z]{4,}$/.test(firstName)) {
-            valid = false;
-            document.getElementById("firstNameError").innerText = "First Name must be at least 4 characters and contain only letters.";
-        }
-
-        const lastName = document.getElementById("lastName").value.trim();
-        if (!/^[A-Za-z]{1,}$/.test(lastName)) {
-            valid = false;
-            document.getElementById("lastNameError").innerText = "Last Name must contain only letters.";
-        }
-
-        const email = document.getElementById("email").value.trim();
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            valid = false;
-            document.getElementById("emailError").innerText = "Enter a valid email (e.g. name@domain.com).";
-        }
-
-        const dob = document.getElementById("dob").value;
-        if (!dob) {
-            valid = false;
-            document.getElementById("dobError").innerText = "Please enter your date of birth.";
-        }
-
-        const age = document.getElementById("age").value.trim();
-        if (!/^\d{2}$/.test(age)) {
-            valid = false;
-            document.getElementById("ageError").innerText = "Age must be a 2-digit number.";
-        }
-
-        const gender = document.querySelector('input[name="gender"]:checked');
-        if (!gender) {
-            valid = false;
-            document.getElementById("genderError").innerText = "Please select your gender.";
-        }
-
-        const phone = document.getElementById("phone").value.trim();
-        if (!/^\d{10}$/.test(phone)) {
-            valid = false;
-            document.getElementById("phoneError").innerText = "Phone number must be 10 digits.";
-        }
-
-        const address = document.getElementById("address").value.trim();
-        if (address === "") {
-            valid = false;
-            document.getElementById("addressError").innerText = "Address cannot be empty.";
-        }
-
-        if (valid) {
-            alert("Form submitted successfully!");
-            this.submit();
-        }
-    });
+    <script>  
+    document.getElementById("signupForm").addEventListener("submit", function(event) {  
+        event.preventDefault();  
+          
+        let valid = true;  
+  
+        document.querySelectorAll(".text-red-500").forEach(el => el.innerText = "");  
+  
+        const firstName = document.getElementById("firstName").value.trim();  
+        if (!/^[A-Za-z]{4,}$/.test(firstName)) {  
+            valid = false;  
+            document.getElementById("firstNameError").innerText = "First Name must be at least 4 characters and contain only letters.";  
+        }  
+  
+        const lastName = document.getElementById("lastName").value.trim();  
+        if (!/^[A-Za-z]{1,}$/.test(lastName)) {  
+            valid = false;  
+            document.getElementById("lastNameError").innerText = "Last Name must contain only letters.";  
+        }  
+  
+        const email = document.getElementById("email").value.trim();  
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {  
+            valid = false;  
+            document.getElementById("emailError").innerText = "Enter a valid email (e.g. name@domain.com).";  
+        }  
+  
+        const dob = document.getElementById("dob").value;  
+        if (!dob) {  
+            valid = false;  
+            document.getElementById("dobError").innerText = "Please enter your date of birth.";  
+        }  
+  
+        const age = document.getElementById("age").value.trim();  
+        if (!/^\d{2}$/.test(age)) {  
+            valid = false;  
+            document.getElementById("ageError").innerText = "Age must be a 2-digit number.";  
+        }  
+  
+        const gender = document.querySelector('input[name="gender"]:checked');  
+        if (!gender) {  
+            valid = false;  
+            document.getElementById("genderError").innerText = "Please select your gender.";  
+        }  
+  
+        const phone = document.getElementById("phone").value.trim();  
+        if (!/^\d{10}$/.test(phone)) {  
+            valid = false;  
+            document.getElementById("phoneError").innerText = "Phone number must be 10 digits.";  
+        }  
+  
+        const address = document.getElementById("address").value.trim();  
+        if (address === "") {  
+            valid = false;  
+            document.getElementById("addressError").innerText = "Address cannot be empty.";  
+        }  
+  
+        if (valid) {  
+            const table = document.getElementById("resultTable");  
+            const row = table.insertRow();  
+            row.innerHTML = `  
+                <td class="border px-6 py-3">${firstName}</td>  
+                <td class="border px-6 py-3">${lastName}</td>  
+                <td class="border px-6 py-3">${email}</td>  
+                <td class="border px-6 py-3">${gender.value}</td>  
+                <td class="border px-6 py-3">${dob}</td>  
+                <td class="border px-6 py-3">${age}</td>  
+                <td class="border px-6 py-3">${phone}</td>  
+                <td class="border px-6 py-3">${address}</td>  
+            `;  
+            this.reset();  
+        }  
+    });  
 </script>
 
 </body>
