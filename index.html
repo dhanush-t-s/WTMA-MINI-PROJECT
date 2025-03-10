@@ -98,32 +98,68 @@
     </div>
 
     <script>
-        document.getElementById("signupForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+        <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        let valid = true;
 
-            let valid = true;
-            document.getElementById("genderError").innerText = "";
-            
-            const gender = document.querySelector('input[name="gender"]:checked');
-            if (!gender) {
-                valid = false;
-                document.getElementById("genderError").innerText = "Please select a gender.";
-            }
+        document.querySelectorAll(".text-red-500").forEach(el => el.innerText = "");
 
-            if (valid) {
-                const firstName = document.getElementById("firstName").value;
-                const lastName = document.getElementById("lastName").value;
-                const email = document.getElementById("email").value;
-                const dob = document.getElementById("dob").value;
-                const age = document.getElementById("age").value;
-                const phone = document.getElementById("phone").value;
-                const address = document.getElementById("address").value;
-                
-                const resultTable = document.getElementById("resultTable");
-                const newRow = resultTable.insertRow();
-                newRow.innerHTML = `<td>${firstName}</td><td>${lastName}</td><td>${email}</td><td>${gender.value}</td><td>${dob}</td><td>${age}</td><td>${phone}</td><td>${address}</td>`;
-            }
-        });
+        const firstName = document.getElementById("firstName").value.trim();
+        if (!/^[A-Za-z]{4,}$/.test(firstName)) {
+            valid = false;
+            document.getElementById("firstNameError").innerText = "First Name must be at least 4 characters and contain only letters.";
+        }
+
+        const lastName = document.getElementById("lastName").value.trim();
+        if (!/^[A-Za-z]{1,}$/.test(lastName)) {
+            valid = false;
+            document.getElementById("lastNameError").innerText = "Last Name must contain only letters.";
+        }
+
+        const email = document.getElementById("email").value.trim();
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            valid = false;
+            document.getElementById("emailError").innerText = "Enter a valid email (e.g. name@domain.com).";
+        }
+
+        const dob = document.getElementById("dob").value;
+        if (!dob) {
+            valid = false;
+            document.getElementById("dobError").innerText = "Please enter your date of birth.";
+        }
+
+        const age = document.getElementById("age").value.trim();
+        if (!/^\d{2}$/.test(age)) {
+            valid = false;
+            document.getElementById("ageError").innerText = "Age must be a 2-digit number.";
+        }
+
+        const gender = document.querySelector('input[name="gender"]:checked');
+        if (!gender) {
+            valid = false;
+            document.getElementById("genderError").innerText = "Please select your gender.";
+        }
+
+        const phone = document.getElementById("phone").value.trim();
+        if (!/^\d{10}$/.test(phone)) {
+            valid = false;
+            document.getElementById("phoneError").innerText = "Phone number must be 10 digits.";
+        }
+
+        const address = document.getElementById("address").value.trim();
+        if (address === "") {
+            valid = false;
+            document.getElementById("addressError").innerText = "Address cannot be empty.";
+        }
+
+        if (valid) {
+            alert("Form submitted successfully!");
+            this.submit();
+        }
+    });
+</script>
     </script>
 </body>
 </html>
